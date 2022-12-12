@@ -53,21 +53,51 @@ const DashboardScreen = () => {
   );
   const projectManagerLinks = (
     <Fragment>
-      <div className="card place-center">
+      <Card>
+        <Card.Body className="text-center">
+          <Link
+            to="/adminteams"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <i className="fa-solid fa-people-group fa-4x"></i>Teams
+          </Link>
+        </Card.Body>
+      </Card>
+      <Card>
+        <Card.Body className="text-center">
+          <Link
+            to="/adminstories"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <i className="fa-solid fa-laptop-file fa-4x"></i>Stories
+          </Link>
+        </Card.Body>
+      </Card>
+      <Card>
+        <Card.Body className="text-center">
+          <Link
+            to="/taskspage"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <i className="fa-solid fa-bars-progress fa-4x"></i>Tasks
+          </Link>
+        </Card.Body>
+      </Card>
+      {/* <div className="card place-center">
         <Link to="/adminteams" style={{ textAlign: "center" }}>
           <i className="fa-solid fa-people-group fa-4x"></i>Teams
         </Link>
-      </div>
-      <div className="card place-center">
+      </div> */}
+      {/* <div className="card place-center">
         <Link to="/adminstories" style={{ textAlign: "center" }}>
           <i className="fa-solid fa-laptop-file fa-4x"></i>Stories
         </Link>
-      </div>
-      <div className="card place-center">
+      </div> */}
+      {/* <div className="card place-center">
         <Link to="/taskspage" style={{ textAlign: "center" }}>
           <i className="fa-solid fa-bars-progress fa-4x"></i>Tasks
         </Link>
-      </div>
+      </div> */}
     </Fragment>
   );
   console.log("ravi", user);

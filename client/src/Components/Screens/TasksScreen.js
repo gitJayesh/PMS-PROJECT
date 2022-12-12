@@ -10,6 +10,7 @@ import TaskCard from "./Tasks/TaskCard.js";
 import Banner from "../Layout/Banner.js";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/esm/Container.js";
 
 const TasksScreen = () => {
   axios.defaults.headers.common[
@@ -41,7 +42,9 @@ const TasksScreen = () => {
         <CreateTask />
       </div> */}
       {/* <div className="user-dashboard-cards"> */}
-      {tasks && tasks.map((task) => <TaskCard key={task.id} task={task} />)}
+      <Container>
+        {tasks && tasks.map((task) => <TaskCard key={task.id} task={task} />)}
+      </Container>
       {/* </Row> */}
       {/* </div> */}
     </>

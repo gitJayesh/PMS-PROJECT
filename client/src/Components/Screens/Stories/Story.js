@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import NavbarUser from "../../Layout/NavbarUser";
 import { useParams } from "react-router-dom";
@@ -11,6 +11,7 @@ import CreateTask from "../Tasks/CreateTask";
 import StoryContext from "../../../Context/story/storyContext";
 import AuthContext from "../../../Context/auth/authContext.js";
 import Container from "react-bootstrap/esm/Container";
+import EditStory from "./EditStory";
 const Story = () => {
   let { id } = useParams();
   // console.log(id);
@@ -20,7 +21,14 @@ const Story = () => {
 
   const authContext = useContext(AuthContext);
   const { user, loadUser } = authContext;
-  const { story, getStory } = storyContext;
+  const { story, getStory, deleteStory } = storyContext;
+  const navigate = useNavigate();
+
+  const handleDelete = () => {
+    deleteStory(id);
+    navigate("/adminstories");
+  };
+
   useEffect(() => {
     loadUser();
     getStory(id);
@@ -44,18 +52,17 @@ const Story = () => {
           <h2 style={{ color: "black" }}>Story Description</h2>
           {story && <p className="lead">{story.description}</p>}
         </div>
-        {user && user.isPM && (
-          <div className=" place-center">
-            <Button variant="primary" type="submit">
-              Edit
-            </Button>
-            <Button variant="primary" type="submit">
-              Delete
-            </Button>
-          </div>
-        )}
-        <div className="create-task">
+
+        <div className="create-task ">
           <CreateTask id={id} />
+          {user && user.isPM && (
+            <>
+              <EditStory story={story} />
+              <Button onClick={handleDelete} variant="primary" type="submit">
+                Delete
+              </Button>
+            </>
+          )}
         </div>
         {/* <div className="user-dashboard-cards"> */}
         <Container>

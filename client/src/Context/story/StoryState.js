@@ -64,7 +64,10 @@ const StoryState = (props) => {
     // console.log("Bishal", config);
     await axios
       .post("/api/story", story)
-      .then((res) => dispatch({ type: ADD_STORY, payload: res.data }))
+      .then((res) => {
+        dispatch({ type: ADD_STORY, payload: res.data });
+        alert("Created");
+      })
       .catch((err) => dispatch({ type: ERROR_STORY, payload: err.msg }));
   };
 
